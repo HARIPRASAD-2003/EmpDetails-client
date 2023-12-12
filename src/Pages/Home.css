@@ -1,0 +1,124 @@
+/* Add this styling to your existing CSS file or create a new one */
+
+.Main {
+    margin: 20px;
+    /* flex-direction: column; */
+
+  }
+  
+  .Home {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .Table {
+    margin: 20px auto; /* set auto margin to center the table horizontally */
+    width: 90%; /* adjust the width as needed */
+  }
+  
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+  }
+
+  .tdcenter{
+    text-align: center;
+  }
+  /* .dob, .emp_name{
+    width: 150px;
+  } */
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+  
+
+  .options{
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px;
+    margin: 5px;
+    padding: 1px;
+    align-content: center;
+    /* width: 100%; */
+  }
+
+button {
+    background-color: #3498db; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Padding for better appearance */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    cursor: pointer; /* Add cursor pointer on hover */
+}
+
+button:hover {
+    background-color: #8f8f8f; /* Darker green on hover */
+}
+
+.ModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1;
+  }
+  
+  .Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc; /* Light Grey Border Color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+  
+  .ModalContent {
+    width: max-content;
+    display: grid;
+    gap: 10px;
+  }
+  
+  /* Adjust width and styling for labels and inputs as needed */
+  .ModalContent label {
+    padding: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .ModalContent input, select {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the total width */
+  }
+  
+  /* Additional styling for the displayed format */
+  .ModalContent label[for="newUserId"],
+  .ModalContent label[for="updatedEmpname"] {
+    font-size: 1.2em; /* Example font size, adjust as needed */
+  }
+  

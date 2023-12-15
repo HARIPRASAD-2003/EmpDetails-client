@@ -211,13 +211,13 @@ const Home = () => {
                         onChange={(e) => setUpdatedAddress(e.target.value)}
                     />
 
-                    {/* <label htmlFor="updatedDOB">Date of Birth</label>
+                    <label htmlFor="updatedDOB">Date of Birth</label>
                     <input
                         type='date'
                         id="updatedDOB"
                         value={updatedDob}
                         onChange={(e) => setUpdatedDob(e.target.value)}
-                    /> */}
+                    />
 
                     </div>
                     <div className='options'>
@@ -230,7 +230,7 @@ const Home = () => {
             {update && (<div >
                 <div className='ModalOverlay'></div>
                 <div style={{width: "50%"}} className='Modal'>
-                    <h2>Create Employee</h2>
+                    <h2>Update Employee</h2>
                     <div style={{width: "100%"}} className='ModalContent'>
 
                     <label htmlFor="updatedEmpname">Name:</label>
@@ -270,13 +270,13 @@ const Home = () => {
                         onChange={(e) => setUpdatedAddress(e.target.value)}
                     />
 
-                    <label htmlFor="updatedDOB">Date of Birth</label>
+                    {/* <label htmlFor="updatedDOB">Date of Birth</label>
                     <input
                         type='date'
                         id="updatedDOB"
                         value={updatedDob}
                         onChange={(e) => setUpdatedDob(e.target.value)}
-                    />
+                    /> */}
 
                     </div>
                     <div className='options'>

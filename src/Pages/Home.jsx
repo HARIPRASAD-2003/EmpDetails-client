@@ -20,7 +20,7 @@ const Home = () => {
     const handleUpdateClick = (user) => {
         setDelEmpId(user.id);
         setUpdatedSalary(user.sal);
-        setUpdatedEmpname(user.name);
+        setUpdatedEmpname(user.emp_name);
         setUpdatedAddress(user.address);
         setUpdatedDept(user.dept);
         setUpdatedDesignation(user.des);

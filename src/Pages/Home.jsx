@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './Home.css'
 const Home = () => {
 
-    const baseURL = "http://localhost:5000";
+    const baseURL = "https://emp-details-server.onrender.com";
     const [userData, setUserData] = useState([]);
     const [create, setCreate] = useState(false);
     const [updatedEmpname, setUpdatedEmpname] = useState("");

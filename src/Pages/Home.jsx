@@ -109,7 +109,11 @@ const Home = () => {
         setDel(true);
     }
 
-
+    const handleDateChange = (e) => {
+        const dateValue = new Date(e.target.value);
+        const formattedDate = dateValue.toISOString().split('T')[0]; 
+        setUpdatedDob(formattedDate);
+    };
 
     const handleCancel = () => {
         setUpdatedAddress("");
@@ -270,7 +274,7 @@ const Home = () => {
                         type='date'
                         id="updatedDOB"
                         value={updatedDob}
-                        onChange={(e) => setUpdatedDob(e.target.value)}
+                        onChange={(e) => handleDateChange(e)}
                     />
 
                     </div>
@@ -319,7 +323,7 @@ const Home = () => {
                                 <td style={{justifyContent: "space-between"}}>
                                     <button style={{backgroundColor: "green"}} onClick={()=>handleUpdateClick(user)}>Edit</button>
                                     <span> </span>
-                                    <button style={{backgroundColor: "red"}} onClick={()=>{setDelEmpId(user.id); handleDelete()}}>DELETE</button>
+                                    <button style={{backgroundColor: "red"}} onClick={()=>handleDeleteClick(user)}>DELETE</button>
                                 </td>
                             </tr> 
                             ))

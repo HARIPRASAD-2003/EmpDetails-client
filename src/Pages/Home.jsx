@@ -84,6 +84,7 @@ const Home = () => {
             if(!response.ok)
                 throw new Error("res not OK!!!");
             const data = await response.json();
+            
             setUserData(data);
             console.log(data);
         } catch(Error){
@@ -192,7 +193,7 @@ const Home = () => {
                     </thead>
                     <tbody>
                     {(userData.length>0) ?
-                    userData.map((user) => (
+                    userData?.map((user) => (
                             <tr key={user.id}>
                                 <td className='tdcenter'>{user.id}</td>
                                 <td>{user.emp_name}</td>

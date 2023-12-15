@@ -24,7 +24,7 @@ const Home = () => {
         setUpdatedAddress(user.address);
         setUpdatedDept(user.dept);
         setUpdatedDesignation(user.des);
-        setUpdatedDob(user.dob);
+        handleDateChange(user.dob);
         setUpdate(true);
     }
 
@@ -109,8 +109,8 @@ const Home = () => {
         setDel(true);
     }
 
-    const handleDateChange = (e) => {
-        const dateValue = new Date(e.target.value);
+    const handleDateChange = (dob) => {
+        const dateValue = new Date(dob);
         const formattedDate = dateValue.toISOString().split('T')[0]; 
         setUpdatedDob(formattedDate);
     };
@@ -274,7 +274,7 @@ const Home = () => {
                         type='date'
                         id="updatedDOB"
                         value={updatedDob}
-                        onChange={(e) => handleDateChange(e)}
+                        onChange={(e) => setUpdatedDob(e.target.value)}
                     />
 
                     </div>

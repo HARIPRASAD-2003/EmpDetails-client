@@ -24,7 +24,8 @@ const Home = () => {
         setUpdatedAddress(user.address);
         setUpdatedDept(user.dept);
         setUpdatedDesignation(user.des);
-        handleDateChange(user.dob);
+        // handleDateChange(user.dob);
+        setUpdatedDob(user.dob);
         setUpdate(true);
     }
 
@@ -210,13 +211,13 @@ const Home = () => {
                         onChange={(e) => setUpdatedAddress(e.target.value)}
                     />
 
-                    <label htmlFor="updatedDOB">Date of Birth</label>
+                    {/* <label htmlFor="updatedDOB">Date of Birth</label>
                     <input
                         type='date'
                         id="updatedDOB"
                         value={updatedDob}
                         onChange={(e) => setUpdatedDob(e.target.value)}
-                    />
+                    /> */}
 
                     </div>
                     <div className='options'>

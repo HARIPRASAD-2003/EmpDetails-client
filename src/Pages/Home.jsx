@@ -5,6 +5,8 @@ const Home = () => {
     const baseURL = "https://emp-details-server.onrender.com";
     const [userData, setUserData] = useState([]);
     const [create, setCreate] = useState(false);
+    const [update, setUpdate] = useState(false);
+    const [del, setDel] = useState(false);
     const [updatedEmpname, setUpdatedEmpname] = useState("");
     const [updatedDept, setUpdatedDept] = useState("");
     const [updatedDesignation, setUpdatedDesignation] = useState("");
@@ -15,8 +17,43 @@ const Home = () => {
     const [connect, setConnect] = useState("");
 
 
-    const handleUpdate = () => {
-        
+    const handleUpdateClick = (user) => {
+        setDelEmpId(user.id);
+        setUpdatedSalary(user.sal);
+        setUpdatedEmpname(user.name);
+        setUpdatedAddress(user.address);
+        setUpdatedDept(user.dept);
+        setUpdatedDesignation(user.des);
+        setUpdatedDob(user.dob);
+        setUpdate(true);
+    }
+
+    const handleUpdate = async() => {
+        try {
+            const response = await fetch(baseURL + '/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: delEmpId,
+                    name: updatedEmpname,
+                    dept: updatedDept,
+                    des: updatedDesignation,
+                    sal: updatedSalary,
+                    dob: updatedDob,
+                    address: updatedAddress
+
+                })
+            });
+            if(!response.ok){
+                throw new Error("res not OK!!");
+            }
+            fetchData();     
+            handleCancel(); 
+        } catch (Error) {
+            console.log(Error);
+        }      
     }
     
     const handleCreate = async() => {
@@ -67,6 +104,11 @@ const Home = () => {
         }
     }
 
+    const handleDeleteClick = () => {
+        setDelEmpId(user.id)
+        setDel(true);
+    }
+
 
 
     const handleCancel = () => {
@@ -77,6 +119,9 @@ const Home = () => {
         setUpdatedEmpname("");
         setUpdatedSalary("");
         setCreate(false);
+        setDelEmpId("");
+        setUpdate(false);
+        setDelete(false);
     }
     const fetchData = async() => {
         try{
@@ -177,6 +222,75 @@ const Home = () => {
                 </div>
                 </div>
             )}
+            {update && (<div >
+                <div className='ModalOverlay'></div>
+                <div style={{width: "50%"}} className='Modal'>
+                    <h2>Create Employee</h2>
+                    <div style={{width: "100%"}} className='ModalContent'>
+
+                    <label htmlFor="updatedEmpname">Name:</label>
+                    <input
+                        type='text'
+                        id="updatedEmpname"
+                        value={updatedEmpname}
+                        onChange={(e) => setUpdatedEmpname(e.target.value)}
+                    />
+                    <label htmlFor="updatedDept">Department:</label>
+                    <input
+                        type='text'
+                        id="updatedDept"
+                        value={updatedDept}
+                        onChange={(e) => setUpdatedDept(e.target.value)}
+                    />
+                    <label htmlFor="updatedDesignation">Designation:</label>
+                    <input
+                        type='text'
+                        id="updatedDesignation"
+                        value={updatedDesignation}
+                        onChange={(e) => setUpdatedDesignation(e.target.value)}
+                    />
+                    <label htmlFor="updatedSalary">Salary:</label>
+                    <input
+                        type='text'
+                        id="updatedSalary"
+                        value={updatedSalary}
+                        onChange={(e) => setUpdatedSalary(e.target.value)}
+                    />
+                    
+                    <label htmlFor="updatedAddress">Address:</label>
+                    <input
+                        type='text'
+                        id="updatedAddress"
+                        value={updatedAddress}
+                        onChange={(e) => setUpdatedAddress(e.target.value)}
+                    />
+
+                    <label htmlFor="updatedDOB">Date of Birth</label>
+                    <input
+                        type='date'
+                        id="updatedDOB"
+                        value={updatedDob}
+                        onChange={(e) => setUpdatedDob(e.target.value)}
+                    />
+
+                    </div>
+                    <div className='options'>
+                        <button style={{backgroundColor: "green"}} onClick={() => handleUpdate()}>Update</button>
+                        <button style={{backgroundColor: "red"}} onClick={() => handleCancel()}>Cancel</button>
+                    </div>
+                </div>
+                </div>
+                )}
+            {del && (<div >
+                <div className='ModalOverlay'></div>
+                <div style={{width: "50%"}} className='Modal'>
+                    Are You Sure?? Do you want to Delete the selected Employee??
+                    <div className='options'>
+                        <button style={{backgroundColor: "green"}} onClick={() => handleDelete()}>Delete</button>
+                        <button style={{backgroundColor: "red"}} onClick={() => handleCancel()}>Cancel</button>
+                    </div>
+                </div>
+                </div>)}
             <div className='Table'>
                 <table className='Table'>
                     <thead>
@@ -203,7 +317,7 @@ const Home = () => {
                                 <td className='tdcenter'>{user.sal}</td>
                                 <td>{user.address}</td>
                                 <td style={{justifyContent: "space-between"}}>
-                                    <button style={{backgroundColor: "green"}} onClick={()=>handleUpdate(user)}>Edit</button>
+                                    <button style={{backgroundColor: "green"}} onClick={()=>handleUpdateClick(user)}>Edit</button>
                                     <span> </span>
                                     <button style={{backgroundColor: "red"}} onClick={()=>{setDelEmpId(user.id); handleDelete()}}>DELETE</button>
                                 </td>

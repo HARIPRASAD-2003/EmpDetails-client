@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './Home.css'
 const Home = () => {
 
-    const baseURL = "http://localhost:8080";
+    const baseURL = "http://localhost:5000";
     const [userData, setUserData] = useState([]);
     const [create, setCreate] = useState(false);
     const [updatedEmpname, setUpdatedEmpname] = useState("");
@@ -12,7 +12,7 @@ const Home = () => {
     const [updatedSalary, setUpdatedSalary] = useState("");
     const [updatedDob, setUpdatedDob] = useState("");
     const [delEmpId, setDelEmpId] = useState("");
-
+    const [connect, setConnect] = useState("");
 
 
     const handleUpdate = () => {
@@ -90,8 +90,18 @@ const Home = () => {
             console.log(Error);
         }
     }
-
+    const checkConnect = async() => {
+        try{
+        const response = await fetch(baseURL+"/check");
+        if (!response.ok) throw new Error("res not ok!!");
+        const text = await response.json();
+        setConnect(text.data);
+        } catch(Error){
+            setConnect("Error: Not Connected")
+        }
+    }
     useEffect(()=>{
+        checkConnect();
         fetchData();
     },[])
 
@@ -101,6 +111,7 @@ const Home = () => {
         <div className='Main'>
             <div className='Home'>
                 <h1>Employee Details</h1>
+                <h3>{connect}</h3>
             </div>
             <div className='options'>
                 <button onClick={() => setCreate(true)}>Add Employee</button>

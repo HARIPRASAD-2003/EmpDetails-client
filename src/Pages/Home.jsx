@@ -104,7 +104,7 @@ const Home = () => {
         }
     }
 
-    const handleDeleteClick = () => {
+    const handleDeleteClick = (user) => {
         setDelEmpId(user.id)
         setDel(true);
     }
@@ -121,7 +121,7 @@ const Home = () => {
         setCreate(false);
         setDelEmpId("");
         setUpdate(false);
-        setDelete(false);
+        setDel(false);
     }
     const fetchData = async() => {
         try{
